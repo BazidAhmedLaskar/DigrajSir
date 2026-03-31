@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Books & Resources | Digraj Singh Rajput</title>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f8f9fa;
+    }
+
+    header {
+        background-color: #000000;
+        color: white;
+        padding: 20px;
+    }
+
+    nav {
+        background-color: #1a1a1a;
+        padding: 15px 0;
+        margin-bottom: 20px;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav a:hover {
+        color: #0096c7;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px 0;
+        font-size: 2.5rem;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 30px auto;
+        padding: 20px;
+    }
+
+    .resource-card {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .resource-card h2 {
+        color: #0077b6;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .resource-card p {
+        color: #555;
+        line-height: 1.8;
+        margin-bottom: 15px;
+    }
+
+    .buy-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #0096c7;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+
+    .buy-btn:hover {
+        background-color: #005f73;
+    }
+
+    .resource-features {
+        margin: 15px 0;
+        list-style-position: inside;
+        color: #555;
+    }
+
+    .resource-features li {
+        margin: 8px 0;
+    }
+
+    footer {
+        background-color: #000000;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+        nav ul {
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+        }
+
+        .resource-card {
+            padding: 20px;
+        }
+
+        .buy-btn {
+            display: block;
+            text-align: center;
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resources.html">Books & Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <h1>Books & Resources</h1>
+  </header>
+
+  <div class="container">
+    <div class="resource-card">
+      <h2>📚 One Shot Question Bank for CBSE Class 10</h2>
+      <p>The ultimate resource for CBSE Class 10 Social Science students. This comprehensive question bank has been specially curated and compiled by Digraj Singh Rajput in collaboration with Educart Publications.</p>
+      <ul class="resource-features">
+        <li><strong>Comprehensive Coverage:</strong> All important topics from CBSE Social Science syllabus</li>
+        <li><strong>One-Shot Approach:</strong> Get all questions in a single resource</li>
+        <li><strong>Exam-Focused:</strong> Aligned with latest CBSE exam patterns</li>
+        <li><strong>Solutions Provided:</strong> Detailed answers for every question</li>
+        <li><strong>Published by:</strong> Educart Publications</li>
+      </ul>
+      <a href="#" class="buy-btn">Buy Now on Amazon</a>
+      <a href="#" class="buy-btn" style="background-color: #ff9800;">Get from Local Store</a>
+    </div>
+
+    <div class="resource-card">
+      <h2>🎬 YouTube Channel - 700+ Educational Videos</h2>
+      <p>Subscribe to Digraj Singh Rajput's YouTube channel for free educational content covering all Social Science topics for CBSE students.</p>
+      <ul class="resource-features">
+        <li>700+ videos on various Social Science topics</li>
+        <li>Clear explanations with visuals and graphics</li>
+        <li>Regular uploads and new content</li>
+        <li>Interactive learning experience</li>
+        <li>1.5M+ subscribers community</li>
+      </ul>
+      <a href="https://www.youtube.com/digrajsinghrajput" target="_blank" class="buy-btn" style="background-color: #ff0000;">Subscribe on YouTube</a>
+    </div>
+
+    <div class="resource-card">
+      <h2>📖 Study Guides & Notes</h2>
+      <p>Access free study materials and comprehensive notes prepared by Digraj Sir for various Social Science topics.</p>
+      <ul class="resource-features">
+        <li>Well-organized notes by chapter</li>
+        <li>Key concepts highlighted</li>
+        <li>Suitable for exam preparation</li>
+        <li>Regular updates with latest syllabus</li>
+        <li>Easy-to-understand language</li>
+      </ul>
+      <a href="#" class="buy-btn">Download Resources</a>
+    </div>
+
+    <div class="resource-card">
+      <h2>🎓 Online Courses & Live Sessions</h2>
+      <p>Join live interactive sessions with Digraj Singh Rajput to clarify doubts and deepen your understanding of Social Science.</p>
+      <ul class="resource-features">
+        <li>Live doubt resolution sessions</li>
+        <li>Interactive Q&A with the educator</li>
+        <li>Topic-wise focused sessions</li>
+        <li>Recorded sessions available for revision</li>
+        <li>Community support and peer learning</li>
+      </ul>
+      <a href="#" class="buy-btn" style="background-color: #9c27b0;">Join Upcoming Sessions</a>
+    </div>
+
+    <div class="resource-card">
+      <h2>💡 Tips & Tricks for Exam Success</h2>
+      <p>Learn exam-specific strategies and time management tips that have helped thousands of students score better in their Social Science exams.</p>
+      <ul class="resource-features">
+        <li>Answer writing techniques</li>
+        <li>Time management strategies</li>
+        <li>Common mistakes to avoid</li>
+        <li>Revision strategies</li>
+        <li>Confidence-building tips</li>
+      </ul>
+      <a href="#" class="buy-btn" style="background-color: #4caf50;">Learn More</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Digraj Singh Rajput | All rights reserved.</p>
+    <p>Dedicated to transforming education through innovative teaching methods.</p>
+  </footer>
+</body>
+</html>
