@@ -13,34 +13,52 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+       
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #2c3e50;
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
-        /* Navigation Styles */
+        /* ====================== NAVIGATION ====================== */
         nav {
             background: linear-gradient(90deg, #1e3a8a 0%, #2563eb 100%);
-            padding: 15px 0;
-            position: sticky;
+            padding: 16px 0;
+                       /* Default: sticky for all */
             top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        /* Make nav FIXED only on desktop (larger screens) */
+        @media (min-width: 769px) {
+            nav {
+                position: fixed;        /* Fixed only on desktop */
+            }
+            body {
+                padding-top: 75px;      /* Space for fixed nav on desktop */
+            }
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            align-items: center;
+            gap: 35px;
+            margin: 0;
+            padding: 0;
             flex-wrap: wrap;
         }
 
@@ -48,72 +66,57 @@
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            padding: 8px 15px;
-            border-radius: 5px;
+            font-size: 1.05rem;
+            padding: 10px 18px;
+            border-radius: 6px;
             position: relative;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         nav a::after {
             content: '';
-            position: absolute;
+          
+            bottom: 6px;
+            left: 50%;
             width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
+            height: 2.5px;
             background-color: #60a5fa;
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
         }
 
         nav a:hover {
-            background-color: rgba(255,255,255,0.1);
+            background-color: rgba(255, 255, 255, 0.12);
+            color: #e0f2fe;
+            transform: translateY(-2px);
         }
 
-        /* Header Styles */
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        /* ====================== HEADER ====================== */
         header {
             background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px 80px;
             position: relative;
             overflow: hidden;
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
         header h1 {
             font-size: 3.5rem;
-            animation: slideDown 0.8s ease-out forwards;
-            margin-bottom: 15px;
-            position: relative;
-            z-index: 2;
             font-weight: 700;
+            margin-bottom: 15px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         header p {
             font-size: 1.3rem;
             margin-bottom: 30px;
-            animation: slideUp 0.8s ease-out forwards;
-            opacity: 0;
-            animation-delay: 0.3s;
             color: #e0e7ff;
-            position: relative;
-            z-index: 2;
             font-weight: 300;
         }
 
@@ -126,595 +129,283 @@
             text-decoration: none;
             transition: all 0.4s ease;
             display: inline-block;
-            animation: slideUp 0.8s ease-out forwards;
-            opacity: 0;
-            animation-delay: 0.6s;
             box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
-            position: relative;
-            z-index: 2;
         }
 
         header a:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(251, 191, 36, 0.4);
-            background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%);
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        /* Container & Boxes */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
         }
 
-        @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.9); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-}
-
-/* Box styles */
-.box {
-    background: white; /* White background for contrast */
-    border-radius: 8px; /* Rounded corners */
-    padding: 20px; /* Inner spacing */
-    margin-bottom: 20px; /* Spacing between boxes */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
-}
-
-.box:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
-}
-
-/* Image styles */
-.box-image {
-    width: 100%; /* Full width of the box */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px; /* Rounded corners for images */
-    margin-bottom: 15px; /* Space below images */
-}
-
-/* Text styles */
-h2, h3 {
-    color: #0077b6; /* Heading color */
-    text-align: center; /* Centered text */
-}
-
-p, ul {
-    color: #555; /* Paragraph text color */
-    line-height: 1.6; /* Improved line spacing */
-}
-
-ul {
-    list-style-type: none; /* No bullets for list */
-    padding: 0; /* No padding */
-}
-
-/* Call to action styles */
-.cta {
-    padding: 60px 20px;
-    text-align: center;
-    background-color: #0096c7; /* Call to action background color */
-    color: white;
-    border-radius: 10px;
-    margin-top: 40px;
-}
-
-.cta a {
-    color: #0096c7;
-    background: white; /* Button background */
-    padding: 10px 20px; /* Button padding */
-    border-radius: 5px; /* Rounded button */
-    font-weight: bold; /* Bold text */
-    text-decoration: none; /* No underline */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
-}
-
-.cta a:hover {
-    background-color: #005f73; /* Darker background on hover */
-    color: white; /* White text on hover */
-}
-
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        .box {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
         }
 
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-
-            header {
-            background-image: url(banner2.jpg);
-            background-repeat: no-repeat   ;
-          
-            image-resolution: 0px;
-            
+        .box img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
 
-            header p {
-                font-size: 1rem;
-            }
-
-            header a {
-                padding: 8px 16px;
-                font-size: 1rem;
-            }
-
-            .box {
-                padding: 15px;
-            }
+        h2, h3 {
+            color: #0077b6;
+            text-align: center;
+            margin-bottom: 15px;
         }
 
-        @media (max-width: 480px) {
-            header h1 {
-                font-size: 1.5rem;
-            }
-        
-            header p {
-                font-size: 0.9rem;
-            }
-
-            .box {
-                margin: 15px 0;
-            }
+        /* Teacher Info Cards */
+        .teacher-info {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            margin: 20px 0;
         }
-        
-        /* Popup Styles */
+
+        .teacher-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .explore-link {
+            display: inline-block;
+            padding: 8px 18px;
+            background-color: #e0f2fe;
+            color: #0369a1;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 60px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #0096c7, #0284c8);
+            color: white;
+            border-radius: 12px;
+            margin: 40px auto;
+            max-width: 1200px;
+        }
+
+        .cta a {
+            background: white;
+            color: #0369a1;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Popup */
         #merasmm-popup-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            padding: 1rem;
+            padding: 15px;
         }
 
         #merasmm-popup {
             background: #fff;
-            border-radius: 0.75rem;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
             padding: 2rem;
-            max-width: 400px;
+            max-width: 420px;
             width: 100%;
             position: relative;
-            transform: scale(1);
-            transition: transform 0.3s ease;
-        }
-
-        #merasmm-popup:hover {
-            transform: scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
         }
 
         #merasmm-close-popup {
             position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
+            top: 12px;
+            right: 15px;
             background: none;
             border: none;
+            font-size: 1.8rem;
             color: #6b7280;
-            font-size: 1.5rem;
             cursor: pointer;
-            display: none;
         }
 
-        #merasmm-close-popup:hover {
-            color: #4b5563;
-        }
-
-        #merasmm-countdown {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            color: #6b7280;
-            font-size: 0.875rem;
-        }
-
-        #merasmm-popup h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4f46e5;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        #merasmm-popup p {
-            font-size: 1rem;
-            color: #374151;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .highlight-purple {
-            color: #a855f7;
-            font-weight: 600;
-        }
-
-        .highlight-pink {
-            color: #ec4899;
-            font-weight: 600;
-        }
-
-        .buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.5rem;
-        }
-
-        #merasmm-popup a {
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 0.875rem;
-            transition: background-color 0.2s ease;
-        }
-
-        .mera-link {
-            background: #4f46e5;
-        }
-
-        .mera-link:hover {
-            background: #4338ca;
-        }
-
-        .whatsapp-link {
-            background: #22c55e;
-        }
-
-        .whatsapp-link:hover {
-            background: #16a34a;
-        }
-
-        .footer-text {
-            font-size: 0.75rem;
-            color: #6b7280;
-            text-align: center;
-        }
-
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .profile {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .profile-img img {
-                max-width: 200px;
-            }
-
-            .teacher-info {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .teacher-img {
-                width: 60px;
-                height: 60px;
-            }
+            header h1 { font-size: 2.4rem; }
+            header p { font-size: 1.1rem; }
+            nav ul { gap: 15px; }
+            nav a { font-size: 0.95rem; padding: 8px 14px; }
+            .box { padding: 20px; }
+            body { padding-top: 0; }           /* No extra padding on mobile */
         }
 
-        @media (max-width: 640px) {
-            #merasmm-popup {
-                max-width: 90%;
-                padding: 1.5rem;
-            }
-
-            #merasmm-popup h1 {
-                font-size: 1.25rem;
-            }
-
-            #merasmm-popup p {
-                font-size: 0.875rem;
-            }
-
-            .buttons {
-                flex-direction: column;
-            }
+        @media (max-width: 480px) {
+            header h1 { font-size: 2rem; }
+            nav ul { gap: 10px; }
+            .teacher-info { flex-direction: column; text-align: center; }
+            .teacher-img { margin-right: 0; margin-bottom: 15px; }
         }
-/* Image styles */
-.box img {
-    width: auto;
-    height: 300px; /* Maintain aspect ratio */
-    border-radius: 10px; /* Rounded corners */
-    margin-bottom: 15px;
-    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.box img:hover {
-    transform: scale(1.05); /* Slight zoom effect on hover */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
-}
-
-/* Alternative style for images in biography and achievements */
-.biography-image {
-    border: 4px solid #0077b6; /* Solid border for biography images */
-    transition: border-color 0.3s; /* Transition for border color */
-}
-
-.biography-image:hover {
-    border-color: #005f73; /* Change border color on hover */
-}
-
     </style>
 </head>
 <body>
 
-    <header>
-        <nav style="background-color: #1a1a1a; padding: 15px 0; margin-bottom: 0;">
-            <ul style="list-style: none; display: flex; justify-content: center; gap: 30px; margin: 0; padding: 0;">
-                <li><a href="index.html" style="color: white; text-decoration: none; font-weight: bold; transition: color 0.3s;">Home</a></li>
-                <li><a href="about.html" style="color: white; text-decoration: none; font-weight: bold; transition: color 0.3s;">About</a></li>
-                <li><a href="resources.html" style="color: white; text-decoration: none; font-weight: bold; transition: color 0.3s;">Books & Resources</a></li>
-                <li><a href="contact.html" style="color: white; text-decoration: none; font-weight: bold; transition: color 0.3s;">Contact</a></li>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="resources.html">Books & Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
-        </nav>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
         <h1>Digraj Singh Rajput</h1>
-        <p>A leading educator in Social Science, dedicated to enhancing students' understanding and appreciation of the subject through innovative teaching methods and valuable resources.</p>
+        <p>A leading educator in Social Science, dedicated to enhancing students' understanding through innovative teaching methods and valuable resources.</p>
         <a href="https://youtube.com/digrajsinghrajput" target="_blank">Visit YouTube Channel</a>
     </header>
+
+    <!-- Main Content -->
     <section class="container" id="digraj-singh-rajput">
-      <h2>Digraj Singh Rajput – CBSE Students' Favourite Educator</h2>
-      <div class="box">
-        <h3>Life Journey So Far</h3>
-       <a href="https://www.effectiveratecpm.com/i5gat5jta?key=51c41e2d6c0fd7a0dd37409dbf9193b0" target="_blank" rel="noopener noreferrer"> <center><img src="images.jpeg" alt="Digraj Singh Rajput" class="box-image"></center></a>
-        <p>Born on 2nd June 1998 in Bhopal, Madhya Pradesh, Digraj Singh Rajput has captured the hearts of millions of students through his immersive video content on his YouTube channel, which has over 1.5M subscribers and more than 700 videos. Known as 'Digraj Sir' by his students, he employs a unique blend of visuals, graphics, narration, and animations to create an engaging learning experience. </p>
-          </div>
-
-    <div class="box">
-        <h3>Innovative Teaching Style</h3>
-        <center><img src="Screenshot (89).png" style="width: 300px;" alt="Innovative Teaching Style" class="box-image">
-       
-            <p>Digraj's teaching style combines visuals, graphics, narration, and animations, creating an immersive experience that makes complex subjects more accessible and enjoyable for students.</p>
-            <p>His teaching journey began with offline tuition while pursuing graduation. After graduating in 2019, he joined Magnet Brains as a Social Science teacher and later worked with Unacademy. Despite personal challenges, including the loss of his sister, he persevered and continued to inspire students through online platforms. Digraj Sir's approach has made him a favorite among students, and he remains committed to transforming education for learners everywhere.</p>
-
+        <h2>Digraj Singh Rajput – CBSE Students' Favourite Educator</h2>
+        
+        <div class="box">
+            <h3>Life Journey So Far</h3>
+            <a href="https://www.effectiveratecpm.com/i5gat5jta?key=51c41e2d6c0fd7a0dd37409dbf9193b0" target="_blank">
+                <center><img src="images.jpeg" alt="Digraj Singh Rajput" style="max-height: 280px;"></center>
+            </a>
+            <p>Born on 2nd June 1998 in Bhopal, Madhya Pradesh, Digraj Singh Rajput has captured the hearts of millions of students through his immersive video content. His YouTube channel has over 1.5M subscribers and more than 700 videos.</p>
         </div>
-    </center>
 
-    <div class="box">
-       <center><h3>Notable Achievements</h3>
-        <img src="logo.jpeg" alt="Achievements" style="border-radius: 50%; height: 100px;" class="box-image">
-        <ul>
-            <li>More than 1.5 million YouTube subscribers. <br>
-           700+ educational videos on various Social Science topics. <br>
-            Renowned for innovative teaching methods and engaging content. <br>
-            Worked with leading educational platforms such as Magnet Brains and Unacademy.</li>
-        </ul>   </center>
-    <br>
-        <center><h3>Book Launched</h3></center>
-       
-         <center> <img src="book.jpg" alt="Achievements" class="box-image">
-          <ul>
-              <li>Launched the book <strong>"One Shot Question Bank for CBSE Class 10"</strong> in collaboration with Educart Publications.</li>
-              <li>Recognized as India’s <strong>Top Social Science Educator</strong>.</li>
-          </ul></center>
-      </div>
-  
-      <div class="box">
-          <h3>Personal Challenges</h3>
-        <center>  <img src="sir.jpeg" alt="Personal Challenges" style="width: 300px;" class="box-image">
-          <p>Despite facing personal challenges, including health issues that forced him to adapt his teaching methods, Digraj has persevered and continued to inspire students through online platforms and social media.</p>
-      </center></div>
-  
-      <div class="box">
-          <h3>Impact on Students</h3>
-         <center> <img src="student.jpeg" alt="Impact on Students"  style="width: 300px;"  class="box-image">
-          <p>Digraj Singh Rajput has positively influenced thousands of students by providing accessible educational content, reigniting their interest in Social Science.</p>
-     </center> 
-  </section>
-  <div class="teacher-info">
-    <a style="text-decoration: none;" href="http://prashantkirad.netlify.app/" target="_blank" rel="noopener noreferrer"><img style="border-color: rgb(255, 255, 255);" src="https://prashantkirad.netlify.app/prashant.jpeg" alt="Teacher Name" class="teacher-img">
-    <div class="teacher-details">
-      <h3 class="teacher-name" style="padding-bottom: 0%; justify-content: flex-start; text-align: left;">Prashant Kirad</h3>
-      <p class="teacher-description" style="padding-top: 0%;">A brief description about the teacher, their experience, teaching style, or subjects they specialize in.</p>
-     </a> <a href="http://explorementor.netlify.app/teachers" class="explore-link" style="  text-align: center; padding: 10px; border-radius: 10px; background-color: rgb(196, 196, 201);">Explore More Educators</a>
+        <div class="box">
+            <h3>Innovative Teaching Style</h3>
+            <center><img src="Screenshot (89).png" style="max-width: 320px;" alt="Teaching Style"></center>
+            <p>Digraj's teaching style combines visuals, graphics, narration, and animations, making complex Social Science topics accessible and enjoyable for students.</p>
+            <p>His journey began with offline tuition. After graduating in 2019, he worked with Magnet Brains and Unacademy. Despite personal challenges, he continues to inspire students across India.</p>
+        </div>
+
+        <div class="box">
+            <h3>Notable Achievements</h3>
+            <center><img src="logo.jpeg" alt="Achievements" style="border-radius: 50%; height: 110px; width: 110px; object-fit: cover;"></center>
+            <ul style="margin-top: 15px; padding-left: 20px;">
+                <li>1.5 Million+ YouTube subscribers</li>
+                <li>700+ high-quality educational videos</li>
+                <li>Worked with Magnet Brains and Unacademy</li>
+                <li>Recognized as one of India’s Top Social Science Educators</li>
+            </ul>
+            <br><br>
+            <h3>Book Launched</h3>
+            <center><img src="book.jpg" alt="Book" style="max-height: 280px;"></center>
+            <p><strong>"One Shot Question Bank for CBSE Class 10"</strong> in collaboration with Educart Publications.</p>
+        </div>
+
+        <div class="box">
+            <h3>Personal Challenges</h3>
+            <center><img src="sir.jpeg" alt="Personal Challenges" style="max-width: 320px;"></center>
+            <p>Despite facing health issues and personal losses, Digraj Sir has shown remarkable resilience and continues to motivate students through online education.</p>
+        </div>
+
+        <div class="box">
+            <h3>Impact on Students</h3>
+            <center><img src="student.jpeg" alt="Impact on Students" style="max-width: 320px;"></center>
+            <p>Digraj Singh Rajput has positively influenced thousands of CBSE students by making Social Science interesting and scoring-friendly.</p>
+        </div>
+    </section>
+
+    <!-- Other Educators -->
+    <div class="container">
+        <div class="teacher-info">
+            <a href="http://prashantkirad.netlify.app/" target="_blank" style="text-decoration: none; color: inherit;">
+                <img src="https://prashantkirad.netlify.app/prashant.jpeg" alt="Prashant Kirad" class="teacher-img">
+                <div class="teacher-details">
+                    <h3 class="teacher-name">Prashant Kirad</h3>
+                    <p class="teacher-description">Popular educator known for his engaging teaching style and strong conceptual clarity.</p>
+                    <span class="explore-link">Explore More Educators →</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="teacher-info">
+            <a href="https://kashifsir-dearsir.netlify.app/" target="_blank" style="text-decoration: none; color: inherit;">
+                <img src="https://kashifsir-dearsir.netlify.app/kasif.jpeg" alt="Mohammad Kashif" class="teacher-img">
+                <div class="teacher-details">
+                    <h3 class="teacher-name">Mohammad Kashif</h3>
+                    <p class="teacher-description">Experienced teacher specializing in clear explanations and student-friendly content.</p>
+                    <span class="explore-link">Explore More Educators →</span>
+                </div>
+            </a>
+        </div>
     </div>
-  </div>
-  <div class="teacher-info">
-    <a style="text-decoration: none;" href="https://kashifsir-dearsir.netlify.app/" target="_blank" rel="noopener noreferrer"><img style="border-color: rgb(255, 255, 255);" src="https://kashifsir-dearsir.netlify.app/kasif.jpeg" alt="Teacher Name" class="teacher-img">
-    <div class="teacher-details">
-      <h3 class="teacher-name" style="justify-content: flex-start; text-align: left; padding-bottom: 0%;">Mohammad Kashif</h3>
-      <p class="teacher-description" style="padding-top: 0%;">A brief description about the teacher, their experience, teaching style, or subjects they specialize in.</p>
-     </a> <a href="http://explorementor.netlify.app/teachers" class="explore-link" style="  text-align: center; padding: 10px; border-radius: 10px; background-color: rgb(196, 196, 201);">Explore More Educators</a>
-    </div>
-  </div>
-    <style>
-        /* General styling for the teacher info section */
-        .teacher-info {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-          }
-          
-          .teacher-info:hover {
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-          }
-          
-          .teacher-img {
-            width: 90px;
-            height: 90px;
-            border-radius: 8px;
-            object-fit: cover;
-            margin-right: 20px;
-            transition: transform 0.3s ease;
-          }
-          
-          .teacher-img:hover {
-            transform: scale(1.1);
-          }
-          
-          .teacher-details {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 500px;
-          }
-          
-          .teacher-name {
-            font-size: 1.4em;
-            font-weight: 600;
-            color: #07529c;
-            margin: 0;
-            transition: color 0.3s ease;
-          }
-          
-          .teacher-name:hover {
-            color: #077bee;
-          }
-          
-          .teacher-description {
-            font-size: 1em;
-            color: #555;
-            margin: 10px 0;
-            line-height: 1.5;
-          }
-          
-          .teacher-description:hover {
-            color: #252323;
-          }
-          
-          .explore-link {
-            margin-top: 10px;
-            text-decoration: none;
-            color: #0080ff;
-            font-weight: bold;
-            transition: color 0.3s ease;
-          }
-          
-          .explore-link:hover {
-            color: #004080;
-          }
-          
-          /* Responsive Design */
-          @media (max-width: 768px) {
-            .teacher-info {
-              flex-direction: column;
-              align-items: center;
-              text-align: center;
-              padding: 15px;
-            }
-          
-            .teacher-img {
-              width: 80px;
-              height: 80px;
-              margin-bottom: 15px;
-            }
-          
-            .teacher-details {
-              max-width: 100%;
-            }
-          
-            .teacher-name {
-              font-size: 1.2em;
-            }
-          
-            .teacher-description {
-              font-size: 0.9em;
-            }
-          }
-          
-          @media (max-width: 480px) {
-            .teacher-name {
-              font-size: 1em;
-            }
-          
-            .teacher-description {
-              font-size: 0.8em;
-              
-            }
-          
-            .explore-link {
-              font-size: 0.9em;
-                text-align: center;
-              
-            }
-          }
-          .explore-link:hover {
-            color: #252323;
-            background-color: #000;
-           
-          }</style>
-          
-  <section class="container cta">
-    
-      <h2 style="color: white;">Join the Community!</h2>
-      <p style="color: white;">Subscribe to Digraj Singh Rajput's YouTube channel for the latest educational videos and resources.</p><br>
-      <a href="https://youtube.com/digrajsinghrajput" style="color: white; background-color: red;" target="_blank">Subscribe Now!</a>
-  </section>
- <!-- Popup Overlay -->
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Join the Community!</h2>
+        <p>Subscribe to Digraj Singh Rajput's YouTube channel for the latest educational videos and resources.</p>
+        <a href="https://youtube.com/digrajsinghrajput" target="_blank">Subscribe Now on YouTube</a>
+    </section>
+
+    <!-- Popup -->
     <div id="merasmm-popup-overlay">
         <div id="merasmm-popup">
-            <button id="merasmm-close-popup">&times;</button>
+            <button id="merasmm-close-popup">×</button>
             <p id="merasmm-countdown">Close in <span id="merasmm-timer">5</span>s</p>
             <h1>Ready to Shine on Instagram? 🌟</h1>
             <p>Boost your profile with <span class="highlight-purple">1000 followers</span> for only <span class="highlight-pink">₹200</span>! Join thousands growing with MeraSMM.</p>
-            <div class="buttons">
-                <a href="https://merasmm.netlify.app" target="_blank" class="mera-link">Check Out MeraSMM</a>
-                <a href="https://wa.me/+918471960713?text=Hey%20MeraSMM,%20I%20want%20to%20grow%20my%20Instagram%20with%201000%20followers%20for%20₹200!%20Can%20you%20tell%20me%20more?" target="_blank" id="merasmm-whatsapp-link" class="whatsapp-link">Chat with Us on WhatsApp</a>
+            <div class="buttons" style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px;">
+                <a href="https://merasmm.netlify.app" target="_blank" style="background:#4f46e5; color:white; padding:12px 24px; border-radius:9999px; text-decoration:none;">Check Out MeraSMM</a>
+                <a href="https://wa.me/+918471960713?text=Hey%20MeraSMM,%20I%20want%20to%20grow%20my%20Instagram%20with%201000%20followers%20for%20₹200!" target="_blank" style="background:#22c55e; color:white; padding:12px 24px; border-radius:9999px; text-decoration:none;">Chat on WhatsApp</a>
             </div>
-            <p class="footer-text">Fast. Safe. Loved by creators. 🚀</p>
+            <p style="text-align:center; font-size:0.8rem; color:#6b7280; margin-top:15px;">Fast. Safe. Loved by creators. 🚀</p>
         </div>
     </div>
 
     <script>
-        (function() {
-            // Countdown timer
-            let timeLeft = 5;
-            const timerElement = document.getElementById('merasmm-timer');
-            const countdownElement = document.getElementById('merasmm-countdown');
-            const closeButton = document.getElementById('merasmm-close-popup');
-            const popupOverlay = document.getElementById('merasmm-popup-overlay');
+        // Popup Countdown
+        let timeLeft = 5;
+        const timerElement = document.getElementById('merasmm-timer');
+        const countdownElement = document.getElementById('merasmm-countdown');
+        const closeButton = document.getElementById('merasmm-close-popup');
+        const popupOverlay = document.getElementById('merasmm-popup-overlay');
 
-            const countdown = setInterval(function() {
-                timeLeft--;
-                timerElement.textContent = timeLeft;
-                if (timeLeft <= 0) {
-                    clearInterval(countdown);
-                    countdownElement.style.display = 'none';
-                    closeButton.style.display = 'block';
-                }
-            }, 1000);
+        const countdown = setInterval(() => {
+            timeLeft--;
+            timerElement.textContent = timeLeft;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                countdownElement.style.display = 'none';
+                closeButton.style.display = 'block';
+            }
+        }, 1000);
 
-            // Close popup
-            closeButton.addEventListener('click', function() {
-                popupOverlay.style.display = 'none';
-            });
-
-            // Disable auto WhatsApp click to avoid intrusive behavior
-            // Optionally re-enable if desired with user consent
-        })();
+        closeButton.addEventListener('click', () => {
+            popupOverlay.style.display = 'none';
+        });
     </script>
-    <div class="cta">
-        <h2 style="color: white;">Join the Educational Revolution!</h2>
-        <p style="color: white; ">Be part of the community that’s transforming education for students everywhere.</p><br>
-        <a href="https://youtube.com/digrajsinghrajput" target="_blank">Explore More!</a>
-    </div>
+
+    <!-- Ad Script -->
     <script type='text/javascript' src='//pl25996202.effectiveratecpm.com/09/5a/4b/095a4b17f5adaaf03d0f3a7374b84b74.js'></script>
 </body>
 </html>
